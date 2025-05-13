@@ -19,10 +19,11 @@ const LiveChat = () => {
           message: makeRandomString(20) + "🤷🏻",
         })
       );
-    }, 5000);
+    }, 500);
 
     return () => clearInterval(i);
   }, []);
+
   return (
     <>
       <div className="ml-2 p-2 border border-black h-[550px] bg-slate-100 rounded-lg overflow-y-scroll flex flex-col-reverse">
@@ -36,7 +37,13 @@ const LiveChat = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log("live msg submit: ", liveMessage);
+          dispatch(
+            addMessage({
+              name: "Raushan Kumar",
+              message: liveMessage,
+            })
+          );
+          setLiveMessage("");
         }}
         className="w-full p-2 ml-2  border border-black rounded-lg"
       >
